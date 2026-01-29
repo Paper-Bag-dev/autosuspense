@@ -1,0 +1,24 @@
+{
+  "name": "autosuspense",
+  "version": "0.1.1",
+  "description": "Automatic suspense wiring block for React.",
+  "license": "ISC",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "dev": "node ./dist/index.ts"
+  },
+  "peerDependencies": {
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
+  },
+  "devDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "@types/react": "^16.14.68",
+    "@types/react-dom": "^16.9.25",
+    "typescript": "^5.3.0"
+  }
+}

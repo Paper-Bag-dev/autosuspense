@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/components/autosuspense.tsx","./src/components/generatedfallback.tsx","./src/components/index.ts","./src/hooks/index.ts","./src/hooks/usecompatid.ts","./src/hooks/usesuspensefallback.ts","./src/types/fallbackregistry.ts","./src/utils/buildtree.ts","./src/utils/rendernode.ts"],"version":"5.9.3"}
