@@ -6,9 +6,26 @@
   "type": "commonjs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "author": {
+    "name": "Paper-Bag-dev",
+    "email": "vikalpsh1234@gmail.com",
+    "url": "https://github.com/Paper-Bag-dev"
+  },
+  "keywords": [
+    "react",
+    "react-suspense",
+    "suspense",
+    "react-hooks",
+    "fallback",
+    "react-library",
+    "ui",
+    "async",
+    "concurrent",
+    "typescript"
+  ],
   "scripts": {
     "build": "tsc -b",
-    "dev": "node ./dist/index.ts"
+    "test:build": "node dist/index.js"
   },
   "peerDependencies": {
     "react": ">=16.8",
