@@ -9,7 +9,7 @@ export function renderNode(
 
   return React.cloneElement(
     node.element,
-    undefined,
+    { key: node.id },
     children.map((child) => renderNode(child, childMap)),
   );
 }

@@ -1,8 +1,8 @@
-import { createContext, type ReactElement } from "react";
+import * as React from "react";
 
 export type Node = {
   id: string;
-  element: ReactElement;
+  element: FallbackDescriptor;
   parent: string | null;
 };
 
@@ -11,4 +11,11 @@ export type FallbackRegistry = {
   currentParent: string | null;
 };
 
-export const FallbackContext = createContext<FallbackRegistry | null>(null);
+export type FallbackDescriptor =
+  | string
+  | React.ReactElement
+  | React.ComponentType;
+
+export const FallbackContext = React.createContext<FallbackRegistry | null>(
+  null,
+);
