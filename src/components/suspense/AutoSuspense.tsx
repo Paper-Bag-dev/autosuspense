@@ -13,7 +13,7 @@ export const AutoSuspense = ({
   prefab = defaultPrefab,
 }: {
   children: React.ReactNode;
-  prefab?: Record<string, PrefabFactory>;
+  prefab?: Record<string, React.ReactElement>;
 }) => {
   const registryRef = React.useRef<FallbackRegistry>({
     nodes: new Map(),
@@ -32,9 +32,11 @@ export const AutoSuspense = ({
 
   return (
     <FallbackContext.Provider value={registryRef.current}>
+      <div>
       <React.Suspense fallback={fallback}>
-        <div>{children}</div>
+        {children}
       </React.Suspense>
+      </div>
     </FallbackContext.Provider>
   );
 };

@@ -1,10 +1,10 @@
+import * as React from "react";
 import { Block } from "./prebuilt/Block";
 import { Card } from "./prebuilt/Card";
 import { List } from "./prebuilt/List";
-import { PrefabFactory } from "../../types/PrefabFactory";
 
-export const defaultPrefab: Record<string, PrefabFactory> = {
-  block: ({ children }) => <Block>{children}</Block>,
-  card: ({ children }) => <Card>{children}</Card>,
-  list: ({ children }) => <List>{children}</List>,
+export const defaultPrefab: Record<string, React.ReactElement> = {
+  block: ({children}) => <Block></Block
+  card: <Card />,
+  list: <List />,
 };
