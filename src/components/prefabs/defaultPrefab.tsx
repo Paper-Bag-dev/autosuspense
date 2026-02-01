@@ -4,7 +4,7 @@ import { Card } from "./prebuilt/Card";
 import { List } from "./prebuilt/List";
 
 export const defaultPrefab: Record<string, React.ReactElement> = {
-  block: ({children}) => <Block></Block
+  block: <Block />,
   card: <Card />,
   list: <List />,
 };
