@@ -32,9 +32,7 @@ export const AutoSuspense = ({
 
   return (
     <FallbackContext.Provider value={registryRef.current}>
-      <div>
         <React.Suspense fallback={fallback}>{children}</React.Suspense>
-      </div>
     </FallbackContext.Provider>
   );
 };

@@ -17,5 +17,5 @@ export const AutoSuspense = ({ children, prefab = defaultPrefab, }) => {
         };
     }
     const fallback = _jsx(GeneratedFallback, { registry: registryRef.current });
-    return (_jsx(FallbackContext.Provider, { value: registryRef.current, children: _jsx("div", { children: _jsx(React.Suspense, { fallback: fallback, children: children }) }) }));
+    return (_jsx(FallbackContext.Provider, { value: registryRef.current, children: _jsx(React.Suspense, { fallback: fallback, children: children }) }));
 };
