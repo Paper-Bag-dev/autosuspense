@@ -1,8 +1,8 @@
-import { useContext, type ReactElement } from "react";
-import { FallbackContext } from "../types/FallbackRegistry";
+import { useContext } from "react";
+import { FallbackContext, FallbackDescriptor } from "../types/FallbackRegistry";
 import { useCompatId } from "./useCompatId";
 
-export function useSuspenseFallback(element: ReactElement): void {
+export function useSuspenseFallback(element: FallbackDescriptor): void {
   const registry = useContext(FallbackContext);
   const id = useCompatId();
 
