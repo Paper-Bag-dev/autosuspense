@@ -1,12 +1,14 @@
-import { type ReactElement } from "react";
+import * as React from "react";
 export type Node = {
     id: string;
-    element: ReactElement;
+    element: FallbackDescriptor;
     parent: string | null;
 };
 export type FallbackRegistry = {
     nodes: Map<string, Node>;
     currentParent: string | null;
+    prebuild: Map<string, React.ReactElement | React.ComponentType<any>>;
 };
-export declare const FallbackContext: import("react").Context<FallbackRegistry | null>;
+export type FallbackDescriptor = string | React.ReactElement | React.ComponentType;
+export declare const FallbackContext: React.Context<FallbackRegistry | null>;
 //# sourceMappingURL=FallbackRegistry.d.ts.map
