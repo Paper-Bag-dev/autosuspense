@@ -9,6 +9,7 @@ export type Node = {
 export type FallbackRegistry = {
   nodes: Map<string, Node>;
   currentParent: string | null;
+  prebuild: Map<string, React.ReactElement | React.ComponentType<any>>;
 };
 
 export type FallbackDescriptor =
