@@ -1,9 +1,9 @@
-# AutoSupense
+# AutoSupense Beta
 AutoSuspense is a small React utility that automatically builds and composes
 Suspense fallback UI based on your component tree without manually wiring
 nested fallback components.
 
-## How to use?:
+## How to use:
 1. Install this library
 ```npm i autosuspense```
 
