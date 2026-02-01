@@ -1,6 +1,6 @@
 .as-block {
   width: 100%;
-  min-height: var(--as-block-min-height, 96px);
+  min-height: 100%;
   border-radius: var(--as-block-radius, 12px);
   box-sizing: border-box;
 
