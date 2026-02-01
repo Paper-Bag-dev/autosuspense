@@ -3,7 +3,7 @@ import { Block } from "./prebuilt/Block";
 import { Card } from "./prebuilt/Card";
 import { List } from "./prebuilt/List";
 export const defaultPrefab = {
-    block: ({ children }) => _jsx(Block, { children: children }),
-    card: ({ children }) => _jsx(Card, { children: children }),
-    list: ({ children }) => _jsx(List, { children: children }),
+    block: _jsx(Block, {}),
+    card: _jsx(Card, {}),
+    list: _jsx(List, {}),
 };
