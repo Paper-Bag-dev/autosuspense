@@ -1,0 +1,42 @@
+.as-block {
+  width: 100%;
+  min-height: var(--as-block-min-height, 96px);
+  border-radius: var(--as-block-radius, 12px);
+  box-sizing: border-box;
+
+  background: var(
+    --as-block-bg,
+    linear-gradient(
+      90deg,
+      var(--as-skeleton-base, #ececec) 25%,
+      var(--as-skeleton-highlight, #f5f5f5) 37%,
+      var(--as-skeleton-base, #ececec) 63%
+    )
+  );
+
+  background-size: 400% 100%;
+  animation:
+    as-shimmer 1.4s ease infinite,
+    as-pulse 2s ease-in-out infinite;
+}
+
+@keyframes as-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes as-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 1;
+  }
+}

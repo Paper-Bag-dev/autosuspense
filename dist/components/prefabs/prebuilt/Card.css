@@ -1,0 +1,45 @@
+.as-card {
+  width: 100%;
+  min-height: var(--as-card-min-height, 120px);
+  padding: var(--as-card-padding, 16px);
+  box-sizing: border-box;
+
+  border-radius: var(--as-card-radius, 12px);
+
+  background: var(
+    --as-card-bg,
+    linear-gradient(
+      90deg,
+      var(--as-skeleton-base, #ececec) 25%,
+      var(--as-skeleton-highlight, #f5f5f5) 37%,
+      var(--as-skeleton-base, #ececec) 63%
+    )
+  );
+
+  background-size: 400% 100%;
+  animation:
+    as-shimmer 1.4s ease infinite,
+    as-pulse 2s ease-in-out infinite;
+}
+
+/* reuse same animations */
+@keyframes as-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@keyframes as-pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 1;
+  }
+}
