@@ -1,2 +1,2 @@
 export { AutoSuspense } from "./components";
-export { useSuspenseFallback } from "./hooks";
+export * from "./hooks";

@@ -1,3 +1,4 @@
 import { useSuspenseFallback } from "./useSuspenseFallback";
-export { useSuspenseFallback };
+import { useSuspenseBoundary } from "./useSuspenseBoundary";
+export { useSuspenseFallback, useSuspenseBoundary };
 //# sourceMappingURL=index.d.ts.map

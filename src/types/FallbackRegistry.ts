@@ -4,6 +4,7 @@ export type Node = {
   id: string;
   element: FallbackDescriptor;
   parent: string | null;
+  isBoundary?: boolean;
 };
 
 export type FallbackRegistry = {

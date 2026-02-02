@@ -6,14 +6,13 @@ import {
   FallbackRegistry,
 } from "../../types/FallbackRegistry";
 import { defaultPrefab } from "../prefabs/defaultPrefab";
-import { PrefabFactory } from "../../types/PrefabFactory";
 
 export const AutoSuspense = ({
   children,
   prefab = defaultPrefab,
 }: {
   children: React.ReactNode;
-  prefab?: Record<string, React.ReactElement>;
+  prefab?: Record<string, React.ReactElement | React.ComponentType<any>>;
 }) => {
   const registryRef = React.useRef<FallbackRegistry>({
     nodes: new Map(),
@@ -32,7 +31,7 @@ export const AutoSuspense = ({
 
   return (
     <FallbackContext.Provider value={registryRef.current}>
-        <React.Suspense fallback={fallback}>{children}</React.Suspense>
+      <React.Suspense fallback={fallback}>{children}</React.Suspense>
     </FallbackContext.Provider>
   );
 };

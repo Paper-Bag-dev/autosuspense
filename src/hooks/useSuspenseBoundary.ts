@@ -1,0 +1,22 @@
+import { useContext } from "react";
+import { FallbackContext, FallbackDescriptor } from "../types/FallbackRegistry";
+import { useCompatId } from "./useCompatId";
+
+export function useSuspenseBoundary(element: FallbackDescriptor): void {
+  const registry = useContext(FallbackContext);
+  const id = useCompatId();
+
+  if (!registry) return;
+  if (registry.nodes.has(id)) return;
+
+  const parentId = registry.currentParent;
+
+  registry.nodes.set(id, {
+    id,
+    element,
+    parent: parentId,
+    isBoundary: true,
+  });
+
+  registry.currentParent = id;
+}
