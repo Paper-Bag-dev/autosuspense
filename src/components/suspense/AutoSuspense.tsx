@@ -5,18 +5,18 @@ import {
   FallbackContext,
   FallbackRegistry,
 } from "../../types/FallbackRegistry";
-import { defaultPrefab } from "../prefabs/defaultPrefab";
+import { defaultFallbacks } from "../prefabs/defaultFallbacks";
 
 export const AutoSuspense = ({
   children,
-  prefab = defaultPrefab,
+  fallbacks = defaultFallbacks,
 }: {
   children: React.ReactNode;
-  prefab?: Record<string, React.ReactElement | React.ComponentType<any>>;
+  fallbacks?: Record<string, React.ReactElement | React.ComponentType<any>>;
 }) => {
   const registryRef = React.useRef<FallbackRegistry>({
     nodes: new Map(),
-    prebuild: new Map(Object.entries(prefab)),
+    prebuild: new Map(Object.entries(fallbacks)),
   });
 
   const fallback = <GeneratedFallback registry={registryRef.current} />;

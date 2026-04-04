@@ -3,6 +3,7 @@ AutoSuspense is a lightweight React utility that automatically composes Suspense
 
 It lets you define fallback UI at the component level, while a parent ```<AutoSuspense>``` boundary handles rendering everything correctly.
 
+---
 ## Why AutoSuspense?:
 
 React Suspense solves async rendering, but fallback composition quickly becomes messy:
@@ -38,6 +39,7 @@ function Page() {
 
 export default Suspend(Page, <div>Loading page...</div>);
 ```
+---
 
 ## Installation:
 ```npm install autosuspense```
@@ -67,31 +69,76 @@ const UserCard = () => {
 export default Suspend(UserCard, <div>Loading user...</div>);
 ```
 
-3. Nested components automatically compose
+- Nested components automatically compose
 ```
 const Parent = () => <Child />;
 
-export default Suspend(Parent, <div>Big Loader...</div>);
+export default Suspend(Parent, <div>Outer Loader...</div>);
 const Child = () => {
   const data = resource.read();
   return <div>{data}</div>;
 };
 
+--- 
+
+
 export default Suspend(Child, <div>Inner Loader...</div>);
 ```
 👉 Resulting fallback:
 ```
-Big Loader...
+Outer Loader...
   Inner Loader...
 ```
-No manual fallback nesting required.
+
+## Using Prefabs (Reusable Fallbacks)
+Instead of passing JSX everywhere, define reusable fallbacks once.
+
+- Define prefabs at the root
+```
+import { AutoSuspense } from "autosuspense";
+import PageSkeleton from "./skeletons/PageSkeleton";
+import CardSkeleton from "./skeletons/CardSkeleton";
+
+function App() {
+  return (
+    <AutoSuspense
+      prefab={{
+        page: PageSkeleton,
+        card: CardSkeleton,
+      }}
+    >
+      <Page />
+    </AutoSuspense>
+  );
+}
+🎯 Use prefab keys in components
+import { Suspend } from "autosuspense";
+
+function Page() {
+  return <Feed />;
+}
+
+export default Suspend(Page, "page");
+function Feed() {
+  const data = resource.read();
+  return <div>{data}</div>;
+}
+
+export default Suspend(Feed, "card");
+```
+- Resulting fallback UI
+```
+PageSkeleton
+  CardSkeleton
+```
 
 ## Core Idea:
-- Wrap a subtree with <AutoSuspense>.
+- Wrap a subtree with ```<AutoSuspense>```.
 - Wrap components with Suspend().
 - Each component declares its fallback.
 - AutoSuspense automatically composes the fallback UI tree without explicit maintaince and wiring.
 
+---
 ## Fallback Options:
 
 You can provide fallbacks in multiple ways:
@@ -99,8 +146,6 @@ You can provide fallbacks in multiple ways:
 1. JSX element:
 ```
 Suspend(Component, <Skeleton />);
-Component
-Suspend(Component, SkeletonComponent);
 ```
 
 2. Component: 
@@ -113,4 +158,6 @@ Suspend(Component, SkeletonComponent);
 Suspend(Component, SkeletonComponent);
 ```
 
-AutoSuspense does not replace Suspense. It enhances fallback composition.
+---
+
+AutoSuspense aims to make and enhance fallback creation and make it's maintainence easier. 
