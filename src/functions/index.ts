@@ -1,2 +1,2 @@
 import { Suspend } from "./Suspend";
-export {Suspend};
+export { Suspend };
