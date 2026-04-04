@@ -1,3 +1,2 @@
-import { useSuspenseFallback } from "./useSuspenseFallback";
-export { useSuspenseFallback };
+export {};
 //# sourceMappingURL=index.d.ts.map

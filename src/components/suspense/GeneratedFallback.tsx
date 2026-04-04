@@ -1,7 +1,7 @@
 import * as React from "react";
-import type { FallbackRegistry } from "../types/FallbackRegistry";
-import { buildTree } from "../utils/buildTree";
-import { renderNode } from "../utils/renderNode";
+import { FallbackRegistry } from "../../types/FallbackRegistry";
+import { buildTree } from "../../utils/buildTree";
+import { renderNode } from "../../utils/renderNode";
 
 export function GeneratedFallback({
   registry,
@@ -13,7 +13,7 @@ export function GeneratedFallback({
 
   return (
     <React.Fragment>
-      {roots.map((node) => renderNode(node, tree))}
+      {roots.map((node) => renderNode(node, tree, registry))}
     </React.Fragment>
   );
 }

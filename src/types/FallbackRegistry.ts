@@ -1,14 +1,27 @@
-import { createContext, type ReactElement } from "react";
+import * as React from "react";
 
 export type Node = {
   id: string;
-  element: ReactElement;
+  element: FallbackDescriptor;
   parent: string | null;
+  isBoundary?: boolean;
 };
 
 export type FallbackRegistry = {
   nodes: Map<string, Node>;
-  currentParent: string | null;
+  prebuild: Map<string, React.ReactElement | React.ComponentType<any>>;
 };
 
-export const FallbackContext = createContext<FallbackRegistry | null>(null);
+export type FallbackDescriptor =
+  | string
+  | React.ReactElement
+  | React.ComponentType;
+
+export type FallbackContextValue = {
+  registry: FallbackRegistry;
+  parentId: string | null;
+};
+
+export const FallbackContext = React.createContext<FallbackContextValue | null>(
+  null,
+);

@@ -1,13 +1,49 @@
-# AutoSupense
-AutoSuspense is a small React utility that automatically builds and composes
-Suspense fallback UI based on your component tree without manually wiring
-nested fallback components.
+# AutoSupense Beta
+AutoSuspense is a lightweight React utility that automatically composes Suspense fallback UI based on your component tree without manually wiring nested ```<Suspense>``` boundaries.
 
-## How to use?:
-1. Install this library
-```npm i autosuspense```
+It lets you define fallback UI at the component level, while a parent ```<AutoSuspense>``` boundary handles rendering everything correctly.
 
-2. Use it by calling and passing your components normally like ```<Supense>```:
+## Why AutoSuspense?:
+
+React Suspense solves async rendering, but fallback composition quickly becomes messy:
+```
+<Suspense fallback={<PageSkeleton />}>
+  <Header />
+  <Suspense fallback={<FeedSkeleton />}>
+    <Feed />
+  </Suspense>
+</Suspense>
+```
+AutoSuspense removes that boilerplate:
+```
+<AutoSuspense>
+  <Page />
+</AutoSuspense>
+```
+Each component defines it's own fallback and autosuspense builds the fallback tree for you.
+
+```
+import { Suspend } from "autosuspense";
+import Feed from "./Feed";
+import Sidebar from "./Sidebar";
+
+function Page() {
+  return (
+    <div>
+      <Feed />
+      <Sidebar />
+    </div>
+  );
+}
+
+export default Suspend(Page, <div>Loading page...</div>);
+```
+
+## Installation:
+```npm install autosuspense```
+
+Usage
+1. Add AutoSuspense boundary
 ```
 import { AutoSuspense } from "autosuspense";
 
@@ -19,24 +55,62 @@ function App() {
   );
 }
 ```
-
-3. Inside each AutoSuspense component provide a fallback componet for that particular component via ```useSuspenseFallback``` hook.
+2. Wrap components with Suspend
 ```
-import { useSuspenseFallback } from "autosuspense";
+import { Suspend } from "autosuspense";
 
-function UserCard() {
-  useSuspenseFallback(<div>Loading user…</div>);
+const UserCard = () => {
+  const data = resource.read(); // may suspend
+  return <div>{data.name}</div>;
+};
 
-  // Component may suspend somewhere below
-  return <Profile />;
-}
+export default Suspend(UserCard, <div>Loading user...</div>);
 ```
 
-### Important Caveats:
-1. This library works on top of existing Suspense blocks and prebuilds your Fallback UI via render tree traversal.
-2. This means that it uses Depth First searching to prebuild so react is only able to show prebuilt Ui when it first encounters a place to suspend. This could mean that rest of your fallback UI in next adjacent components never render.
+3. Nested components automatically compose
+```
+const Parent = () => <Child />;
 
-### TBD:
-1. Adding Default Skeletons.
-2. Supporting existing Library skeleton implementations.
-3. Adding a central config & template extension components & file to easily extend and manage your Fallback UI.
+export default Suspend(Parent, <div>Big Loader...</div>);
+const Child = () => {
+  const data = resource.read();
+  return <div>{data}</div>;
+};
+
+export default Suspend(Child, <div>Inner Loader...</div>);
+```
+👉 Resulting fallback:
+```
+Big Loader...
+  Inner Loader...
+```
+No manual fallback nesting required.
+
+## Core Idea:
+- Wrap a subtree with <AutoSuspense>.
+- Wrap components with Suspend().
+- Each component declares its fallback.
+- AutoSuspense automatically composes the fallback UI tree without explicit maintaince and wiring.
+
+## Fallback Options:
+
+You can provide fallbacks in multiple ways:
+
+1. JSX element:
+```
+Suspend(Component, <Skeleton />);
+Component
+Suspend(Component, SkeletonComponent);
+```
+
+2. Component: 
+```
+Suspend(Component, SkeletonComponent);
+```
+
+3. String:
+```
+Suspend(Component, SkeletonComponent);
+```
+
+AutoSuspense does not replace Suspense. It enhances fallback composition.

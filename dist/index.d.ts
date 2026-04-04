@@ -1,3 +1,4 @@
 export { AutoSuspense } from "./components";
-export { useSuspenseFallback } from "./hooks";
+export * from "./hooks";
+export * from "./functions";
 //# sourceMappingURL=index.d.ts.map

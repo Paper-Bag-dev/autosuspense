@@ -1,2 +1,2 @@
-import { createContext } from "react";
-export const FallbackContext = createContext(null);
+import * as React from "react";
+export const FallbackContext = React.createContext(null);
