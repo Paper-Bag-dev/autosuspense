@@ -67,11 +67,11 @@ const UserCard = () => {
 export default Suspend(UserCard, <div>Loading user...</div>);
 ```
 
-3. Nested components automatically compose
+- Nested components automatically compose
 ```
 const Parent = () => <Child />;
 
-export default Suspend(Parent, <div>Big Loader...</div>);
+export default Suspend(Parent, <div>Outer Loader...</div>);
 const Child = () => {
   const data = resource.read();
   return <div>{data}</div>;
@@ -81,7 +81,7 @@ export default Suspend(Child, <div>Inner Loader...</div>);
 ```
 👉 Resulting fallback:
 ```
-Big Loader...
+Outer Loader...
   Inner Loader...
 ```
 No manual fallback nesting required.
