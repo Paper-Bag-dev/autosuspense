@@ -2,20 +2,21 @@ import { useContext } from "react";
 import { FallbackContext, FallbackDescriptor } from "../types/FallbackRegistry";
 import { useCompatId } from "./useCompatId";
 
+// Depricated hook, core logic changed
 export function useSuspenseFallback(element: FallbackDescriptor): void {
   const registry = useContext(FallbackContext);
   const id = useCompatId();
 
   if (!registry) return;
-  if (registry.nodes.has(id)) return;
+  if (registry.registry.nodes.has(id)) return;
 
-  const parentId = registry.currentParent;
+  const parentId = registry.parentId;
 
-  registry.nodes.set(id, {
+  registry.registry.nodes.set(id, {
     id,
     element,
     parent: parentId,
   });
 
-  registry.currentParent = id;
+  registry.parentId = id;
 }

@@ -7,16 +7,16 @@ export function useSuspenseBoundary(element: FallbackDescriptor): void {
   const id = useCompatId();
 
   if (!registry) return;
-  if (registry.nodes.has(id)) return;
+  if (registry.registry.nodes.has(id)) return;
 
-  const parentId = registry.currentParent;
+  const parentId = registry.parentId;
 
-  registry.nodes.set(id, {
+  registry.registry.nodes.set(id, {
     id,
     element,
     parent: parentId,
     isBoundary: true,
   });
 
-  registry.currentParent = id;
+  registry.parentId = id;
 }

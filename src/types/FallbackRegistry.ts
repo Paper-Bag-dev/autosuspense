@@ -9,7 +9,6 @@ export type Node = {
 
 export type FallbackRegistry = {
   nodes: Map<string, Node>;
-  currentParent: string | null;
   prebuild: Map<string, React.ReactElement | React.ComponentType<any>>;
 };
 
@@ -18,6 +17,11 @@ export type FallbackDescriptor =
   | React.ReactElement
   | React.ComponentType;
 
-export const FallbackContext = React.createContext<FallbackRegistry | null>(
+export type FallbackContextValue = {
+  registry: FallbackRegistry;
+  parentId: string | null;
+};
+
+export const FallbackContext = React.createContext<FallbackContextValue | null>(
   null,
 );

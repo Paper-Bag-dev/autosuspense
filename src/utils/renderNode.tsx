@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 import type { FallbackRegistry, Node } from "../types/FallbackRegistry";
 import { resolveElement } from "./resolveElement";
-import { AutoSuspense } from "../components";
+import { Block } from "../components/prefabs/prebuilt/Block";
 
 export function renderNode(
   node: Node,
@@ -18,12 +18,9 @@ export function renderNode(
 
   if (node.isBoundary) {
     return (
-      <AutoSuspense
-        key={node.id}
-        prefab={Object.fromEntries(registry.prebuild)}
-      >
+      <Suspense key={node.id} fallback={<Block />}>
         {React.cloneElement(resolvedEle, {}, renderedChildren)}
-      </AutoSuspense>
+      </Suspense>
     );
   }
 

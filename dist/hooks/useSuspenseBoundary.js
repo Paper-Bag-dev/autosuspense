@@ -6,14 +6,14 @@ export function useSuspenseBoundary(element) {
     const id = useCompatId();
     if (!registry)
         return;
-    if (registry.nodes.has(id))
+    if (registry.registry.nodes.has(id))
         return;
-    const parentId = registry.currentParent;
-    registry.nodes.set(id, {
+    const parentId = registry.parentId;
+    registry.registry.nodes.set(id, {
         id,
         element,
         parent: parentId,
         isBoundary: true,
     });
-    registry.currentParent = id;
+    registry.parentId = id;
 }

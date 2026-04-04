@@ -16,21 +16,18 @@ export const AutoSuspense = ({
 }) => {
   const registryRef = React.useRef<FallbackRegistry>({
     nodes: new Map(),
-    currentParent: null,
     prebuild: new Map(Object.entries(prefab)),
   });
 
-  if (registryRef.current === null) {
-    registryRef.current = {
-      nodes: new Map(),
-      currentParent: null,
-      prebuild: new Map(Object.entries(prefab)),
-    };
-  }
   const fallback = <GeneratedFallback registry={registryRef.current} />;
 
   return (
-    <FallbackContext.Provider value={registryRef.current}>
+    <FallbackContext.Provider
+      value={{
+        registry: registryRef.current,
+        parentId: null,
+      }}
+    >
       <React.Suspense fallback={fallback}>{children}</React.Suspense>
     </FallbackContext.Provider>
   );

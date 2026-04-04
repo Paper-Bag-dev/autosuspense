@@ -1,1 +1,1 @@
-{"version":3,"file":"useSuspenseFallback.d.ts","sourceRoot":"","sources":["../../src/hooks/useSuspenseFallback.ts"],"names":[],"mappings":"AACA,OAAO,EAAmB,kBAAkB,EAAE,MAAM,2BAA2B,CAAC;AAGhF,wBAAgB,mBAAmB,CAAC,OAAO,EAAE,kBAAkB,GAAG,IAAI,CAgBrE"}
+{"version":3,"file":"useSuspenseFallback.d.ts","sourceRoot":"","sources":["../../src/hooks/useSuspenseFallback.ts"],"names":[],"mappings":"AACA,OAAO,EAAmB,kBAAkB,EAAE,MAAM,2BAA2B,CAAC;AAIhF,wBAAgB,mBAAmB,CAAC,OAAO,EAAE,kBAAkB,GAAG,IAAI,CAgBrE"}
