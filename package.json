@@ -1,6 +1,6 @@
 {
   "name": "autosuspense",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "Automatic suspense wiring block for React.",
   "license": "ISC",
   "type": "commonjs",
