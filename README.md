@@ -140,6 +140,7 @@ PageSkeleton
 - Wrap components with Suspend().
 - Each component declares its fallback.
 - AutoSuspense automatically composes the fallback UI tree without explicit maintaince and wiring.
+- Fallback maps automatically help compose UI changes without changing the actual Component.
 
 ---
 ## Fallback Options:
