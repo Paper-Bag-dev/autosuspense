@@ -87,8 +87,8 @@ Outer Loader...
   Inner Loader...
 ```
 
-## Using Prefabs (Reusable Fallbacks)
-Instead of passing JSX everywhere, define reusable fallbacks once.
+## Using fallback maps (Per Suspense Reusable Fallbacks)
+Instead of passing JSX everywhere, define reusable fallbacks once based required design. Use this to compose multiple fallback designs in the same component.
 
 - Define prefabs at the root
 ```
@@ -99,7 +99,7 @@ import CardSkeleton from "./skeletons/CardSkeleton";
 function App() {
   return (
     <AutoSuspense
-      prefab={{
+      fallbacks={{
         page: PageSkeleton,
         card: CardSkeleton,
       }}
@@ -164,4 +164,4 @@ Suspend(Component, SkeletonComponent);
 ```
 
 ---
-AutoSuspense aims to make and enhance fallback creation and make it's maintainence easier. 
+AutoSuspense aims to make and enhance fallback creation and make it's maintainence easier.
