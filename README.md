@@ -130,6 +130,7 @@ export default Suspend(Feed, "card");
 ```
 - Resulting fallback UI
 ```
+```
 PageSkeleton
   CardSkeleton
 ```
@@ -144,8 +145,8 @@ PageSkeleton
 ## Fallback Options:
 
 You can provide fallbacks in multiple ways:
-
 1. JSX element:
+
 ```
 Suspend(Component, <Skeleton />);
 ```
@@ -156,10 +157,11 @@ Suspend(Component, SkeletonComponent);
 ```
 
 3. String:
+
+
 ```
 Suspend(Component, SkeletonComponent);
 ```
 
 ---
-
 AutoSuspense aims to make and enhance fallback creation and make it's maintainence easier. 
