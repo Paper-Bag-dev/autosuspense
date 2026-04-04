@@ -110,7 +110,7 @@ function App() {
 }
 ```
 
-## Use prefab keys in components
+## Use fallback map keys in components:
 
 ```
 import { Suspend } from "autosuspense";
