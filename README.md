@@ -79,9 +79,6 @@ const Child = () => {
   return <div>{data}</div>;
 };
 
---- 
-
-
 export default Suspend(Child, <div>Inner Loader...</div>);
 ```
 👉 Resulting fallback:
@@ -111,8 +108,10 @@ function App() {
     </AutoSuspense>
   );
 }
+```
 
 ## Use prefab keys in components
+
 ```
 import { Suspend } from "autosuspense";
 
@@ -128,8 +127,9 @@ function Feed() {
 
 export default Suspend(Feed, "card");
 ```
-- Resulting fallback UI
-```
+
+Resulting fallback UI
+
 ```
 PageSkeleton
   CardSkeleton
