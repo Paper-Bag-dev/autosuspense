@@ -1,4 +1,4 @@
-# AutoSupense Beta
+# AutoSupense
 AutoSuspense is a lightweight React utility that automatically composes Suspense fallback UI based on your component tree without manually wiring nested ```<Suspense>``` boundaries.
 
 It lets you define fallback UI at the component level, while a parent ```<AutoSuspense>``` boundary handles rendering everything correctly.
@@ -79,9 +79,6 @@ const Child = () => {
   return <div>{data}</div>;
 };
 
---- 
-
-
 export default Suspend(Child, <div>Inner Loader...</div>);
 ```
 👉 Resulting fallback:
@@ -90,8 +87,8 @@ Outer Loader...
   Inner Loader...
 ```
 
-## Using Prefabs (Reusable Fallbacks)
-Instead of passing JSX everywhere, define reusable fallbacks once.
+## Using fallback maps (Per Suspense Reusable Fallbacks)
+Instead of passing JSX everywhere, define reusable fallbacks once based required design. Use this to compose multiple fallback designs in the same component.
 
 - Define prefabs at the root
 ```
@@ -102,7 +99,7 @@ import CardSkeleton from "./skeletons/CardSkeleton";
 function App() {
   return (
     <AutoSuspense
-      prefab={{
+      fallbacks={{
         page: PageSkeleton,
         card: CardSkeleton,
       }}
@@ -111,8 +108,10 @@ function App() {
     </AutoSuspense>
   );
 }
+```
 
-## Use prefab keys in components
+## Use fallback map keys in components:
+
 ```
 import { Suspend } from "autosuspense";
 
@@ -128,7 +127,9 @@ function Feed() {
 
 export default Suspend(Feed, "card");
 ```
-- Resulting fallback UI
+
+Resulting fallback UI
+
 ```
 PageSkeleton
   CardSkeleton
@@ -139,13 +140,14 @@ PageSkeleton
 - Wrap components with Suspend().
 - Each component declares its fallback.
 - AutoSuspense automatically composes the fallback UI tree without explicit maintaince and wiring.
+- Fallback maps automatically help compose UI changes without changing the actual Component.
 
 ---
 ## Fallback Options:
 
 You can provide fallbacks in multiple ways:
-
 1. JSX element:
+
 ```
 Suspend(Component, <Skeleton />);
 ```
@@ -156,10 +158,11 @@ Suspend(Component, SkeletonComponent);
 ```
 
 3. String:
+
+
 ```
 Suspend(Component, SkeletonComponent);
 ```
 
 ---
-
-AutoSuspense aims to make and enhance fallback creation and make it's maintainence easier. 
+AutoSuspense aims to make and enhance fallback creation and make it's maintainence easier.
