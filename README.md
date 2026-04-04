@@ -79,6 +79,9 @@ const Child = () => {
   return <div>{data}</div>;
 };
 
+--- 
+
+
 export default Suspend(Child, <div>Inner Loader...</div>);
 ```
 👉 Resulting fallback:
@@ -86,7 +89,50 @@ export default Suspend(Child, <div>Inner Loader...</div>);
 Outer Loader...
   Inner Loader...
 ```
-No manual fallback nesting required.
+
+## Using Prefabs (Reusable Fallbacks)
+Instead of passing JSX everywhere, define reusable fallbacks once.
+
+- Define prefabs at the root
+```
+import { AutoSuspense } from "autosuspense";
+import PageSkeleton from "./skeletons/PageSkeleton";
+import CardSkeleton from "./skeletons/CardSkeleton";
+
+function App() {
+  return (
+    <AutoSuspense
+      prefab={{
+        page: PageSkeleton,
+        card: CardSkeleton,
+      }}
+    >
+      <Page />
+    </AutoSuspense>
+  );
+}
+
+## Use prefab keys in components
+```
+import { Suspend } from "autosuspense";
+
+function Page() {
+  return <Feed />;
+}
+
+export default Suspend(Page, "page");
+function Feed() {
+  const data = resource.read();
+  return <div>{data}</div>;
+}
+
+export default Suspend(Feed, "card");
+```
+- Resulting fallback UI
+```
+PageSkeleton
+  CardSkeleton
+```
 
 ## Core Idea:
 - Wrap a subtree with ```<AutoSuspense>```.
