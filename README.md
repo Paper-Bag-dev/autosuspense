@@ -2,6 +2,7 @@
 AutoSuspense is a lightweight React utility that automatically composes Suspense fallback UI based on your component tree without manually wiring nested ```<Suspense>``` boundaries.
 
 It lets you define fallback UI at the component level, while a parent ```<AutoSuspense>``` boundary handles rendering everything correctly.
+
 ---
 ## Why AutoSuspense?:
 
@@ -39,6 +40,7 @@ function Page() {
 export default Suspend(Page, <div>Loading page...</div>);
 ```
 ---
+
 ## Installation:
 ```npm install autosuspense```
 
@@ -113,4 +115,5 @@ Suspend(Component, SkeletonComponent);
 ```
 
 ---
+
 AutoSuspense aims to make and enhance fallback creation and make it's maintainence easier. 
