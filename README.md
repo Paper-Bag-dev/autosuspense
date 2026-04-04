@@ -111,7 +111,9 @@ function App() {
     </AutoSuspense>
   );
 }
-🎯 Use prefab keys in components
+
+## Use prefab keys in components
+```
 import { Suspend } from "autosuspense";
 
 function Page() {
