@@ -3,9 +3,16 @@
   "version": "1.0.2",
   "description": "Automatic suspense wiring block for React.",
   "license": "ISC",
-  "type": "commonjs",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "author": {
     "name": "Paper-Bag-dev",
     "email": "vikalpsh1234@gmail.com",

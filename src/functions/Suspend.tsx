@@ -25,7 +25,13 @@ export function Suspend<T extends object>(
     }
 
     return (
-      <FallbackContext.Provider value={{ registry, parentId: id }}>
+      <FallbackContext.Provider
+        value={{
+          registry,
+          parentId: id,
+          generateId: ctx.generateId,
+        }}
+      >
         <Component {...props} />
       </FallbackContext.Provider>
     );

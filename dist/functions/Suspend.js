@@ -17,6 +17,10 @@ export function Suspend(Component, fallback) {
                 parent: parentId,
             });
         }
-        return (_jsx(FallbackContext.Provider, { value: { registry, parentId: id }, children: _jsx(Component, { ...props }) }));
+        return (_jsx(FallbackContext.Provider, { value: {
+                registry,
+                parentId: id,
+                generateId: ctx.generateId,
+            }, children: _jsx(Component, { ...props }) }));
     };
 }

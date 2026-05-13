@@ -19,6 +19,12 @@ export const AutoSuspense = ({
     prebuild: new Map(Object.entries(fallbacks)),
   });
 
+  const counterRef = React.useRef(0);
+  const generateId = React.useCallback(() => {
+    counterRef.current++;
+    return `as-${counterRef.current}`;
+  }, []);
+
   const fallback = <GeneratedFallback registry={registryRef.current} />;
 
   return (
@@ -26,6 +32,7 @@ export const AutoSuspense = ({
       value={{
         registry: registryRef.current,
         parentId: null,
+        generateId,
       }}
     >
       <React.Suspense fallback={fallback}>{children}</React.Suspense>

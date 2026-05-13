@@ -13,6 +13,7 @@ export type FallbackDescriptor = string | React.ReactElement | React.ComponentTy
 export type FallbackContextValue = {
     registry: FallbackRegistry;
     parentId: string | null;
+    generateId: () => string;
 };
 export declare const FallbackContext: React.Context<FallbackContextValue | null>;
 //# sourceMappingURL=FallbackRegistry.d.ts.map

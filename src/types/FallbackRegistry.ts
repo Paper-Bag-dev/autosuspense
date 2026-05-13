@@ -20,6 +20,7 @@ export type FallbackDescriptor =
 export type FallbackContextValue = {
   registry: FallbackRegistry;
   parentId: string | null;
+  generateId: () => string;
 };
 
 export const FallbackContext = React.createContext<FallbackContextValue | null>(

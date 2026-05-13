@@ -1,23 +1,26 @@
 import * as React from "react";
+import { FallbackContext } from "../types/FallbackRegistry";
 
 let globalId = 0;
 
-function generateFallbackId() {
+function generateGlobalFallbackId() {
   globalId += 1;
-  return `as-${globalId}`;
+  return `as-global-${globalId}`;
 }
 
 export function useCompatId(): string {
   // React 18 path
-  if (typeof (React as any).useId === "function") {
-    return (React as any).useId();
+  const ReactObj = typeof React === "object" && React !== null ? React : (window as any).React;
+  if (typeof (ReactObj as any).useId === "function") {
+    return (ReactObj as any).useId();
   }
 
   // React 16/17 fallback
+  const ctx = React.useContext(FallbackContext);
   const idRef = React.useRef<string | null>(null);
 
   if (idRef.current === null) {
-    idRef.current = generateFallbackId();
+    idRef.current = ctx?.generateId() ?? generateGlobalFallbackId();
   }
 
   return idRef.current;
